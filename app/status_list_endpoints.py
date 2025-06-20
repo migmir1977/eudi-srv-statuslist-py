@@ -42,7 +42,7 @@ def take_index():
     if api_key != current_app.config['API_key']:
         return jsonify({"message": "Unauthorized access"}), 401
 
-    doctype = request.form["doctype"]
+    doctype = request.form.get("doctype", "").strip()    
     ALLOWED_DOCTYPES = {"pdf", "xml", "json"}
     if doctype not in ALLOWED_DOCTYPES:
         abort(400, "Invalid doctype")    
