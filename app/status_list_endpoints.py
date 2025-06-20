@@ -43,6 +43,10 @@ def take_index():
         return jsonify({"message": "Unauthorized access"}), 401
 
     doctype = request.form["doctype"]
+    ALLOWED_DOCTYPES = {"pdf", "xml", "json"}
+    if doctype not in ALLOWED_DOCTYPES:
+        abort(400, "Invalid doctype")    
+        
     country = request.form["country"]
     expiry_date = request.form["expiry_date"]
 
