@@ -27,8 +27,6 @@ jobs:
           pip install -r app/requirements.txt || true  # allow missing deps
 
       - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@v2
-        with:
-          projectBaseDir: app
+        uses: SonarSource/sonarcloud-github-action@v2       
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
